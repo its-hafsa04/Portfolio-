@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: sans-serif;
+        line-height: 1.6;
+        padding-top: 7px;
+      }
+
+      .main {
+        width: 100%;
+        background: url("pic/bg.jpg") no-repeat center center/cover;
+        height: 100vh;
+        position: relative;
+        color: #100e0e;
+      }
+
+      .navbar {
+        width: 100%;
+        display: flex;
+        position: fixed;
+        left: 0;
+        background: rgba(255, 255, 255, 0.9);
+        z-index: 1000;
+        top: 0;
+        padding: 7px 20px;
+        align-items: center;
+        justify-content: space-between;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      .navbar .logo {
+        width: 100px;
+        border-radius: 50%;
+        cursor: pointer;
+      }
+
+      ul {
+        display: flex;
+        list-style: none;
+      }
+
+      ul li {
+        margin-right: 16px;
+      }
+
+      ul li a {
+        font-size: 16px;
+        font-weight: bold;
+        text-decoration: none;
+        color: darkslategray;
+        transition: 0.4s ease;
+      }
+
+      ul li a:hover {
+        color: rgb(230, 104, 59);
+      }
+
+      .info {
+        margin: 6% 7%;
+        margin-right: 50%;
+        margin-top: 300px;
+      }
+
+      .info h1 {
+        font-size: 65px;
+        color: rgb(36, 32, 30);
+      }
+
+      .info h3 {
+        font-size: 18px;
+        letter-spacing: 1px;
+        line-height: 1.5;
+      }
+
+      .info span {
+        color: rgb(230, 104, 59);
+      }
+
+      .info a {
+        text-decoration: none;
+        color: #fff;
+        background: rgb(36, 32, 30);
+        margin: 26px 0;
+        padding: 10px 18px;
+        border-radius: 10px;
+        display: inline-block;
+        transition: 0.4s ease;
+      }
+
+      .info a:hover {
+        background: rgb(59, 174, 209);
+      }
+
+      .image {
+        width: 30%;
+        height: 60%;
+        position: absolute;
+        right: 100px;
+        bottom: 0;
+      }
+
+      .image img {
+        position: absolute;
+        height: 120%;
+        left: 40%;
+        border-radius: 50%;
+        transform: translate(-55%);
+        bottom: 20%;
+        transition: left 2s ease;
+      }
+
+      .image:hover img {
+        left: 55%;
+      }
+
+      section {
+        padding: 2rem 0;
+        text-align: center;
+      }
+
+      .about {
+        padding: 70px 10%;
+        background: #f4f4f4;
+        color: #333;
+      }
+
+      .about .row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+
+      .about .col {
+        flex: 1;
+        padding: 20px;
+        min-width: 300px;
+      }
+
+      .about .img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 100px;
+      }
+
+      .about .para {
+        font-size: 18px;
+        line-height: 1.6;
+      }
+
+      .project-img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 8px;
+      }
+
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1rem;
+        margin-top: 1rem;
+        padding: 0 10%;
+      }
+
+      .project {
+        padding: 1rem;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        text-align: center;
+        background-color: #e5e0e0;
+      }
+
+      .project h3 {
+        margin-bottom: 0.5rem;
+      }
+
+      .project p {
+        color: #555;
+      }
+
+      .form {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+      }
+      .form h4 {
+        margin: 10px 0 5px;
+      }
+      .form input {
+        width: calc(100% - 22px);
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+      .form button {
+        width: calc(50% - 10px);
+        padding: 10px;
+        margin: 10px 5px 0 0;
+        border: none;
+        border-radius: 5px;
+        background-color: #5cb85c;
+        color: white;
+        cursor: pointer;
+      }
+      .form button[type="reset"] {
+        background-color: #d9534f;
+      }
+      .form button:hover {
+        opacity: 0.9;
+      }
+      .row {
+        display: flex;
+        justify-content: space-evenly;
+      }
+      footer {
+        background: #a1a1a1;
+        color: #2d2222;
+        text-align: center;
+        padding: 1rem 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="main">
+      <div class="navbar">
+        <img src="pic/logo.png" class="logo" alt="Logo" />
+        <ul>
+          <li><a href="#home">HOME</a></li>
+          <li><a href="#about">ABOUT</a></li>
+          <li><a href="#projects">MY WORKS</a></li>
+          <li><a href="#contact">CONTACT</a></li>
+        </ul>
+      </div>
+      <section id="home">
+        <div class="info">
+          <h3>Hi, I'm <span>Hafsa Sajid</span>.</h3>
+          <h1><span>W</span>EB <span>D</span>EVELOPER</h1>
+          <h3>
+            A mern stack developer and a competitive programmer from Lahore,
+            Pakistan.
+          </h3>
+          <a href="#about">Learn More</a>
+        </div>
+
+        <div class="image">
+          <img
+            src="pic/dp.jpeg"
+            alt="Profile Image"
+            class="girl"
+          />
+        </div>
+      </section>
+    </div>
+
+    <section id="about" class="about">
+      <h2>About Me</h2>
+      <div class="row">
+        <div class="col">
+          <img
+            class="img"
+            src="pic/dp.jpeg"
+            alt="Profile Image"
+          />
+        </div>
+        <div class="col">
+          <p class="lead para">
+            <b
+              >Hey! It's me Hafsa Sajid. I am a 2nd year BSCS student, I'm
+              passionate about computer science and technology. Currently
+              pursuing my Bachelor's degree in Computer Science, I have gained a
+              foundation in programming and web development. Eager to expand my
+              knowledge and skills, I am excited to explore various aspects of
+              computer science. With a commitment to continuous learning, I look
+              forward to collaborating with fellow students and professionals to
+              contribute to the ever-evolving world of technology.</b
+            >
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" style="background-color: #eceaea">
+      <div class="container">
+        <h2>Projects</h2>
+        <div class="projects-grid">
+          <div class="project">
+            <h3>Restaurant Menu</h3>
+            <img
+              src="pic/restaurant-menu.png"
+              alt="Project 1"
+              class="project-img"
+            />
+            <p>The website consisting of restaurant menu using React.js.</p>
+          </div>
+          <div class="project">
+            <h3>To-Do List</h3>
+            <img src="pic/todo.png" alt="Project 3" class="project-img" />
+            <p>It helps you to make a list of things to do using React.js.</p>
+          </div>
+          <div class="project">
+            <h3>Search Filter</h3>
+            <img
+              src="pic/search filter.png"
+              alt="Project 4"
+              class="project-img"
+            />
+            <p>Hepls you find text images using React.js.</p>
+          </div>
+          
+          <div class="project">
+            <h3>Slot Machine</h3>
+            <img
+              src="pic/Slot Machine.png"
+              alt="Project 6"
+              class="project-img"
+            />
+            <p>A slot machine game to match the similar items using React.js.</p>
+          </div>
+          <div class="project">
+            <h3>Keep App</h3>
+            <img src="pic/keep app.png" alt="Project 5" class="project-img" />
+            <p>App that keeps your important notes using React.js.</p>
+          </div>
+          <div class="project">
+            <h3>Weather Forecast</h3>
+            <img
+              src="pic/weather-forecast.png"
+              alt="Project 2"
+              class="project-img"
+            />
+            <p>
+              The app is use to find the weather of a specific city using
+              Node.js.
+            </p>
+          </div>
+          <div class="project">
+            <h3>Dynamic Website</h3>
+            <img
+              src="pic/dynamic website.png"
+              alt="Project 6"
+              class="project-img"
+            />
+            <p>A businesses website using MERN stack.</p>
+          </div>
+          <div class="project">
+            <h3>Real Estate</h3>
+            <img
+              src="pic/real estate.png"
+              alt="Project 6"
+              class="project-img"
+            />
+            <p>A real-estate website for property dealers using MERN stack.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" style="background-color: #f1f1f1">
+      <div class="container">
+        <h2>Contact Me</h2>
+        <form class="form">
+          <h4>Name:</h4>
+          <input type="name" placeholder="Name" />
+          <h4>Email:</h4>
+          <input type="email" placeholder="Email" />
+          <h4>Message:</h4>
+          <textarea
+            name="message"
+            rows="8"
+            cols="45"
+            placeholder="Message..."
+          ></textarea>
+          <button type="submit">Submit</button>
+          <button type="reset">Reset</button>
+        </form>
+        <div class="row">
+          <p>
+            <strong>Email: </strong><br /><a
+              href="mailto:sajidhafsa23@gmail.com"
+              style="color: #100e0e; text-decoration: none"
+              >sajidhafsa23@gmail.com</a
+            >
+          </p>
+          <p>
+            <strong>LinkedIn: </strong><br /><a
+              href="https://www.linkedin.com/in/hafsa-sajid-8b307427b"
+              style="color: black; text-decoration: none"
+              >Hafsa Sajid</a
+            >
+          </p>
+          <p>
+            <strong>GitHub: </strong><br /><a
+              href="https://github.com/its-hafsa04/"
+              style="color: black; text-decoration: none"
+              >its-hafsa04</a
+            >
+          </p>
+          <p>
+            <strong>Instagram: </strong><br /><a
+              href="https://www.instagram.com/hafsa_sajid52?igsh=aW53YjZhZzhhcHFo"
+              style="color: black; text-decoration: none"
+              >hafsa_sajid52</a
+            >
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>All rights reserved &copy; Hafsa Sajid, 2024.</p>
+    </footer>
+  </body>
+</html>
